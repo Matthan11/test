@@ -1,0 +1,1 @@
+# Hier werden den die Logging-Daten in eine CSV-Datei geschrieben
