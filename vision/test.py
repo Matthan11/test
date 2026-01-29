@@ -2,92 +2,91 @@ import cv2
 import mediapipe as mp
 import time
 
-# ===== MediaPipe Setup =====
+# ================= MediaPipe Setup =================
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
-hands = mp_hands.Hands(max_num_hands=1, min_detection_confidence=0.7, min_tracking_confidence=0.7)
+hands = mp_hands.Hands(
+    max_num_hands=1,
+    min_detection_confidence=0.7,
+    min_tracking_confidence=0.7
+)
 
-# ===== Status von Licht und Rollläden =====
-room1 = {"light": 0, "blind": 0}
-room2 = {"light": 0, "blind": 0}
+# ================= Status =================
+room1 = {"light": 50, "blind": 50}
+room2 = {"light": 50, "blind": 50}
 
-# ===== Benutzer Login Gesten =====
-# "open" = offene Hand, "fist" = Faust
 USERS = {
-    "Benutzer1": "open",
-    "Benutzer2": "fist"
+    "Benutzer 1": "open",
+    "Benutzer 2": "fist"
 }
 
 current_user = None
-last_gesture_time = 0
-GESTURE_COOLDOWN = 1.0  # Sekunden
+selected_room = None
 
-# ===== Funktionen =====
+last_gesture_time = 0
+GESTURE_COOLDOWN = 1.2  # Sekunden
+
+# ================= Hilfsfunktionen =================
 def fingers_up(hand_landmarks):
-    tips_ids = [4, 8, 12, 16, 20]
+    tips = [4, 8, 12, 16, 20]
     fingers = []
+
     # Daumen
-    if hand_landmarks.landmark[tips_ids[0]].x < hand_landmarks.landmark[tips_ids[0]-1].x:
-        fingers.append(1)
-    else:
-        fingers.append(0)
-    # Zeigefinger, Mittelfinger, Ringfinger, kleiner Finger
-    for id in range(1,5):
-        if hand_landmarks.landmark[tips_ids[id]].y < hand_landmarks.landmark[tips_ids[id]-2].y:
-            fingers.append(1)
-        else:
-            fingers.append(0)
+    fingers.append(
+        1 if hand_landmarks.landmark[4].x <
+             hand_landmarks.landmark[3].x else 0
+    )
+
+    # Andere Finger
+    for i in [8, 12, 16, 20]:
+        fingers.append(
+            1 if hand_landmarks.landmark[i].y <
+                 hand_landmarks.landmark[i - 2].y else 0
+        )
     return fingers
 
-def detect_handshape(fingers):
-    """Erkennt einfache Handformen, ohne Ringfinger zu nutzen"""
-    # Faust
-    if fingers == [0,0,0,0,0]:
+def detect_handshape(f):
+    if f == [0,0,0,0,0]:
         return "fist"
-    # Offene Hand
-    elif fingers == [1,1,1,1,1]:
+    if f == [1,1,1,1,1]:
         return "open"
-    # Zeigefinger
-    elif fingers == [0,1,0,0,0]:
+    if f == [0,1,0,0,0]:
         return "index"
-    # Zeigefinger + Mittelfinger
-    elif fingers == [0,1,1,0,0]:
+    if f == [0,1,1,0,0]:
         return "index_middle"
-    # Daumen hoch
-    elif fingers == [1,0,0,0,0]:
+    if f == [1,0,0,0,0]:
         return "thumb_up"
-    # Daumen runter (Daumen nach unten, andere Finger geschlossen)
-    elif fingers == [1,0,0,0,1]:  # kleiner Finger als Orientierung
+    if f == [1,0,0,0,1]:
         return "thumb_down"
-    # Mittelfinger
-    elif fingers == [0,0,1,0,0]:
+    if f == [0,0,1,0,0]:
         return "middle"
-    # Kleiner Finger
-    elif fingers == [0,0,0,0,1]:
-        return "pinky"
-    else:
-        return "other"
+    return "other"
 
 def change_light(room, delta, room_name):
-    room["light"] = min(max(room["light"] + delta, 0), 100)
-    print(f"Licht in {room_name}: {room['light']}%")
+    room["light"] = max(0, min(100, room["light"] + delta))
+    print(f"Licht {room_name}: {room['light']}%")
 
 def change_blind(room, delta, room_name):
-    room["blind"] = min(max(room["blind"] + delta, 0), 100)
-    print(f"Rollladen in {room_name}: {room['blind']}% geöffnet")
+    room["blind"] = max(0, min(100, room["blind"] + delta))
+    print(f"Rollladen {room_name}: {room['blind']}%")
 
-def draw_status(frame, room, room_name, x, y):
-    cv2.putText(frame, f"{room_name}", (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,255), 2)
-    # Lichtbalken
-    cv2.putText(frame, f"Licht: {room['light']}%", (x, y+30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,255), 2)
-    cv2.rectangle(frame, (x, y+50), (x+200, y+70), (50,50,50), -1)
-    cv2.rectangle(frame, (x, y+50), (x+2*room['light'], y+70), (0,255,255), -1)
-    # Rollladenbalken
-    cv2.putText(frame, f"Rollladen: {room['blind']}%", (x, y+100), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,0), 2)
-    cv2.rectangle(frame, (x, y+120), (x+200, y+140), (50,50,50), -1)
-    cv2.rectangle(frame, (x, y+120), (x+2*room['blind'], y+140), (0,255,0), -1)
+def draw_room(frame, room, name, x, y):
+    cv2.putText(frame, name, (x, y),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,255), 2)
 
-# ===== Hauptprogramm =====
+    cv2.putText(frame, f"Licht: {room['light']}%", (x, y+30),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,255), 2)
+    cv2.rectangle(frame, (x, y+45), (x+200, y+65), (50,50,50), -1)
+    cv2.rectangle(frame, (x, y+45), (x+2*room['light'], y+65),
+                  (0,255,255), -1)
+
+    cv2.putText(frame, f"Rollladen: {room['blind']}%", (x, y+95),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,0), 2)
+    cv2.rectangle(frame, (x, y+110), (x+200, y+130), (50,50,50), -1)
+    cv2.rectangle(frame, (x, y+110), (x+2*room['blind'], y+130),
+                  (0,255,0), -1)
+
+# ================= Hauptprogramm =================
 cap = cv2.VideoCapture(0)
 
 while True:
@@ -96,60 +95,70 @@ while True:
         break
 
     frame = cv2.flip(frame, 1)
-    rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    result = hands.process(rgb_frame)
+    rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    result = hands.process(rgb)
     now = time.time()
 
     if result.multi_hand_landmarks:
-        for hand_landmarks in result.multi_hand_landmarks:
-            mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-            fingers = fingers_up(hand_landmarks)
+        for hand in result.multi_hand_landmarks:
+            mp_drawing.draw_landmarks(frame, hand, mp_hands.HAND_CONNECTIONS)
+            fingers = fingers_up(hand)
             handshape = detect_handshape(fingers)
 
-            # ===== Login =====
+            # ===== LOGIN =====
             if current_user is None:
                 for user, gesture in USERS.items():
                     if handshape == gesture and now - last_gesture_time > GESTURE_COOLDOWN:
                         current_user = user
-                        print(f"{current_user} erfolgreich eingeloggt!")
+                        print(f"{user} eingeloggt")
                         last_gesture_time = now
 
-            # ===== Steuerung Raum 1 =====
-            elif now - last_gesture_time > GESTURE_COOLDOWN:
-                # Raum 1
+            # ===== RAUMAUSWAHL =====
+            elif selected_room is None and now - last_gesture_time > GESTURE_COOLDOWN:
                 if handshape == "index":
-                    change_light(room1, 20, "Raum 1")
-                elif handshape == "index_middle":
-                    change_light(room1, -20, "Raum 1")
+                    selected_room = "Raum 1"
+                    print("Raum 1 ausgewählt")
+                    last_gesture_time = now
                 elif handshape == "thumb_up":
-                    change_blind(room1, 25, "Raum 1")
-                elif handshape == "thumb_down":
-                    change_blind(room1, -25, "Raum 1")
+                    selected_room = "Raum 2"
+                    print("Raum 2 ausgewählt")
+                    last_gesture_time = now
 
-                # Raum 2
-                elif handshape == "pinky":
-                    change_light(room2, 20, "Raum 2")
+            # ===== STEUERUNG =====
+            elif now - last_gesture_time > GESTURE_COOLDOWN:
+                room = room1 if selected_room == "Raum 1" else room2
+
+                if handshape == "index_middle":
+                    change_light(room, 20, selected_room)
                 elif handshape == "middle":
-                    change_light(room2, -20, "Raum 2")
-                elif handshape == "index_middle":
-                    change_blind(room2, 25, "Raum 2")
-                elif handshape == "fist":
-                    change_blind(room2, -25, "Raum 2")
+                    change_light(room, -20, selected_room)
+                elif handshape == "thumb_up":
+                    change_blind(room, 25, selected_room)
+                elif handshape == "thumb_down":
+                    change_blind(room, -25, selected_room)
 
                 last_gesture_time = now
 
-    # ===== Anzeige =====
+    # ===== UI =====
     if current_user:
-        cv2.putText(frame, f"Benutzer: {current_user}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
+        cv2.putText(frame, f"Benutzer: {current_user}", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,255,0), 2)
     else:
-        cv2.putText(frame, "Login: Benutzer Geste zeigen", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
+        cv2.putText(frame, "Bitte einloggen", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,0,255), 2)
 
-    draw_status(frame, room1, "Raum 1", 10, 60)
-    draw_status(frame, room2, "Raum 2", 10, 220)
+    if selected_room:
+        cv2.putText(frame, f"Aktiver Raum: {selected_room}", (10, 60),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,0), 2)
+    else:
+        cv2.putText(frame, "Raum auswaehlen", (10, 60),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,0,255), 2)
 
-    cv2.imshow("Gesten Home Control", frame)
-    key = cv2.waitKey(1)
-    if key == 27:
+    draw_room(frame, room1, "Raum 1", 10, 90)
+    draw_room(frame, room2, "Raum 2", 10, 250)
+
+    cv2.imshow("Gestensteuerung Smart Home", frame)
+    if cv2.waitKey(1) == 27:
         break
 
 cap.release()
