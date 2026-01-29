@@ -2,8 +2,8 @@
 # Modularisierung, Wartbarkeit, Saubere Struktur, Trennung von Logik & Konfiguration
 
 import pygame
-from ui.light_controller import toggle_light
-from ui.shutter_controller import rollo_up, rollo_down
+from ui.light_controller import dim_up, dim_down,toggle_light
+from ui.shutter_controller import rollo_up, rollo_down, toggle_close
 
 # Fenster
 WIDTH = 800
@@ -31,14 +31,20 @@ DEFAULT_USER = "user_a"
 
 KEYS = {
     # Raum 1 – Wohnküche
-    pygame.K_1: ("room_1", toggle_light),
     pygame.K_q: ("room_1", rollo_up),
     pygame.K_a: ("room_1", rollo_down),
+    pygame.K_y: ("room_1", toggle_close),
+    pygame.K_w: ("room_1", dim_up),
+    pygame.K_s: ("room_1", dim_down),
+    pygame.K_x: ("room_1", toggle_light),
 
-    # Raum 2 – Schlafzimmer
-    pygame.K_2: ("room_2", toggle_light),
-    pygame.K_w: ("room_2", rollo_up),
-    pygame.K_s: ("room_2", rollo_down),
+    # Raum 2 – Schlafzimmer 
+    pygame.K_e: ("room_2", rollo_up),
+    pygame.K_d: ("room_2", rollo_down),
+    pygame.K_c: ("room_2", toggle_close),
+    pygame.K_r: ("room_2", dim_up),
+    pygame.K_f: ("room_2", dim_down),
+    pygame.K_v: ("room_2", toggle_light),
 
     # Benutzer wechseln
     pygame.K_p: ("user", "user_a"),

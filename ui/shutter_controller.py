@@ -2,11 +2,16 @@
 
 from logging_system import write_log
 
+STEP = 5 # Umgerechnet sind das 10 %
 
 def rollo_up(self, user):
-        self.rollo_height = max(0, self.rollo_height - 5)
-        write_log(user, f"{self.name}: Rollo hoch")
+        self.rollo_height = max(0, self.rollo_height - STEP)
+        write_log(user, f"{self.name}: Rollo auf {self.rollo_height} %")
 
 def rollo_down(self, user):
-        self.rollo_height = min(self.window.height, self.rollo_height + 5)
-        write_log(user, f"{self.name}: Rollo runter")
+        self.rollo_height = min(self.window.height, self.rollo_height + STEP)
+        write_log(user, f"{self.name}: Rollo auf {self.rollo_height} %")
+
+def toggle_close(self,user):
+        self.rollo_height = self.window.height
+        write_log(user, f"{self.name}: Rollo auf 100 %")

@@ -41,7 +41,7 @@ def main():
         # Bildschirm JEDEN FRAME neu zeichnen
         screen.fill(config.BACKGROUND)
         for room in rooms.values():
-            room.draw(screen)
+            room.draw(screen, font)
 
         # Benutzer anzeigen
         user_text = font.render(f"Aktueller Benutzer: {current_user}", True, (255, 255, 255))
@@ -51,7 +51,6 @@ def main():
         clock.tick(config.FPS)
 
     pygame.quit()
-
 
 
 if __name__ == "__main__":
