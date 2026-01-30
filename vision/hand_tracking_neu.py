@@ -3,7 +3,7 @@ import mediapipe as mp
 import time
 
 from vision.user_login import handle_login
-from room_selection import handle_room_selection
+from vision.room_selection import handle_room_selection
 
 # ================= MediaPipe =================
 mp_hands = mp.solutions.hands
