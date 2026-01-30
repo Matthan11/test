@@ -117,7 +117,7 @@ if current_user in avatars:
     )
     screen.blit(user_text, (20, 20))
 
-    # ---------- AVATARE ZEICHNEN ----------
+    #---------- AVATARE ZEICHNEN ----------
     for avatar in avatars.values():
         avatar.draw(screen, font)
 
