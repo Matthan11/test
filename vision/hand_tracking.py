@@ -24,14 +24,14 @@ LIGHT_CONTROL = "light_control"
 SHUTTER_CONTROL = "shutter_control"
 
 # Cooldown gegen Mehrfachauslösung
-COOLDOWN = 1.2
+COOLDOWN = 2
 last_action_time = 0
 
 
 # ================= Finger-Erkennung =================
 def fingers_up(hand):
     """
-    Gibt eine Liste mit 5 Werten zurück (Daumen → kleiner Finger)
+    Gibt eine Liste mit 5 Werten zurück (Daumen --> kleiner Finger)
     1 = Finger oben, 0 = Finger unten
     """
     fingers = []
@@ -90,44 +90,44 @@ def draw_help(screen, font, state):
     if state == USER_SELECT:
         lines = [
             "USER WAHL:",
-            "Zeigefinger → User 1",
-            "Zeige- & Mittelfinger → User 2"
+            "Zeigefinger --> User 1",
+            "Zeige- & Mittelfinger --> User 2"
         ]
 
     elif state == ROOM_SELECT:
         lines = [
             "RAUM WAHL:",
-            "Zeigefinger → Raum 1",
-            "Zeige- & Mittelfinger → Raum 2",
-            "Daumen und Mittelfinger → Zurück"
+            "Zeigefinger --> Raum 1",
+            "Zeige- & Mittelfinger --> Raum 2",
+            "Daumen und Mittelfinger --> Zurück"
         ]
 
     elif state == CONTROL_SELECT:
         lines = [
             "STEUERUNG:",
-            "Zeigefinger → Licht",
-            "Zeige- & Mittelfinger → Rollo",
-            "Mittelfinger → Zurück"
+            "Zeigefinger --> Licht",
+            "Zeige- & Mittelfinger --> Rollo",
+            "Mittelfinger --> Zurück"
         ]
 
     elif state == LIGHT_CONTROL:
         lines = [
             "LICHT:",
-            "Daumen hoch → Heller",
-            "Daumen runter → Dunkler",
-            "Alle Finger → Licht komplett aus",
-            "Kleinerfinger → Licht komplett an",
-            "Mittelfinger → Zurück"
+            "Zeigefinger --> Heller",
+            "Zeige- & Mittelfinger --> Dunkler",
+            "Alle Finger --> Licht komplett aus",
+            "Kleinerfinger --> Licht komplett an",
+            "Mittelfinger --> Zurück"
         ]
 
     elif state == SHUTTER_CONTROL:
         lines = [
             "ROLLO:",
-            "Daumen hoch → Rollo hoch",
-            "Daumen runter → Rollo runter",
-            "Alle Finger → Rollo komplett auf",
-            "Kleinerfinger → Rollo komplett zu",
-            "Mittelfinger → Zurück"
+            "Zeigefinger --> Rollo hoch",
+            "Zeige- & Mittelfinger --> Rollo runter",
+            "Alle Finger --> Rollo komplett auf",
+            "Kleinerfinger --> Rollo komplett zu",
+            "Mittelfinger --> Zurück"
         ]
 
     else:
@@ -156,7 +156,7 @@ def get_gesture_action(state, current_user, selected_room, frame, rooms):
 
     now = time.time()
 
-    # Keine Hand oder Cooldown aktiv → nichts tun
+    # Keine Hand oder Cooldown aktiv --> nichts tun
     if not result.multi_hand_landmarks or now - last_action_time < COOLDOWN:
         return state, current_user, selected_room, None
 
@@ -199,9 +199,9 @@ def get_gesture_action(state, current_user, selected_room, frame, rooms):
             selected_room = None
 
     elif state == LIGHT_CONTROL:
-        if handshape == "thumb_up":
+        if handshape == "index":
             control_light(selected_room, "up", current_user)
-        elif handshape == "thumb_down":
+        elif handshape == "index_middle":
             control_light(selected_room, "down", current_user)
         elif handshape == "open":
             control_light(selected_room, "off", current_user)
@@ -211,9 +211,9 @@ def get_gesture_action(state, current_user, selected_room, frame, rooms):
             state = CONTROL_SELECT
 
     elif state == SHUTTER_CONTROL:
-        if handshape == "thumb_up":
+        if handshape == "index":
             control_shutter(selected_room, "up", current_user)
-        elif handshape == "thumb_down":
+        elif handshape == "index_middle":
             control_shutter(selected_room, "down", current_user)
         elif handshape == "open":
             control_shutter(selected_room, "open", current_user)
