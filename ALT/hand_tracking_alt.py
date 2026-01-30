@@ -2,13 +2,14 @@ import cv2
 import mediapipe as mp
 import time
 
-from login import handle_login
+from vision.user_login import handle_login
 from room_selection import handle_room_selection
-from control import control_light, control_blind
+from ui.light_controller import control_light
+from ui.shutter_controller import control_shutter
 
 # ================= MediaPipe =================
 mp_hands = mp.solutions.hands
-mp_drawing = mp.solutions.drawing_utils
+# mp_drawing = mp.solutions.drawing_utils
 hands = mp_hands.Hands(max_num_hands=1, min_detection_confidence=0.7)
 
 # ================= Status =================
@@ -35,6 +36,9 @@ def fingers_up(hand):
 
     return fingers
 
+def clamp(value):
+        return max(0, min(100, value))
+
 def detect_handshape(f):
     if f == [0,0,0,0,0]:
         return "fist"
@@ -54,22 +58,22 @@ def detect_handshape(f):
         return "pinky"
     return "other"
 
-# ================= Anzeige =================
-def draw_room(frame, room, name, x, y):
-    cv2.putText(frame, name, (x, y),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,255), 2)
+# # ================= Anzeige =================
+# def draw_room(frame, room, name, x, y):
+#     cv2.putText(frame, name, (x, y),
+#                 cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,255), 2)
 
-    cv2.putText(frame, f"Licht: {room['light']}%", (x, y+30),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,255), 2)
-    cv2.rectangle(frame, (x, y+45), (x+200, y+65), (50,50,50), -1)
-    cv2.rectangle(frame, (x, y+45), (x+2*room['light'], y+65),
-                  (0,255,255), -1)
+#     cv2.putText(frame, f"Licht: {room['light']}%", (x, y+30),
+#                 cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,255), 2)
+#     cv2.rectangle(frame, (x, y+45), (x+200, y+65), (50,50,50), -1)
+#     cv2.rectangle(frame, (x, y+45), (x+2*room['light'], y+65),
+#                   (0,255,255), -1)
 
-    cv2.putText(frame, f"Rollladen: {room['blind']}%", (x, y+95),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,0), 2)
-    cv2.rectangle(frame, (x, y+110), (x+200, y+130), (50,50,50), -1)
-    cv2.rectangle(frame, (x, y+110), (x+2*room['blind'], y+130),
-                  (0,255,0), -1)
+#     cv2.putText(frame, f"Rollladen: {room['blind']}%", (x, y+95),
+#                 cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,0), 2)
+#     cv2.rectangle(frame, (x, y+110), (x+200, y+130), (50,50,50), -1)
+#     cv2.rectangle(frame, (x, y+110), (x+2*room['blind'], y+130),
+#                   (0,255,0), -1)
 
 # ================= Hauptloop =================
 cap = cv2.VideoCapture(0)
@@ -96,7 +100,7 @@ while True:
                 if current_user and selected_room:
                     room = room1 if selected_room == "Raum 1" else room2
                     control_light(room, handshape)
-                    control_blind(room, handshape)
+                    control_shutter(room, handshape)
 
                 last_action_time = now
 

@@ -1,3 +1,5 @@
+from logging_system import write_log
+
 def handle_login(handshape, current_user):
     users = {
         "Benutzer 1": "open",
@@ -8,5 +10,6 @@ def handle_login(handshape, current_user):
         for user, gesture in users.items():
             if handshape == gesture:
                 print(f"{user} eingeloggt")
+                write_log(user, f"Benutzer gewechselt zu {user}")
                 return user
     return current_user
