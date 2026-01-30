@@ -1,37 +1,27 @@
 # Hier nur die Lichtsteurung
 
-from vision.hand_tracking_neu import clamp
 from logging_system import write_log
+from utils import clamp
 
 
-STEP = 10 # Prozent-Schritte
+STEP = 10  # Prozent-Schritte
 
-# def dim_up(self, user):
-#         self.light_level = min(100, self.light_level + STEP)
-#         write_log(user, f"{self.name}: Licht auf {self.light_level} %")
-
-# def dim_down(self, user):
-#         self.light_level = max(0, self.light_level - STEP)
-#         write_log(user, f"{self.name}: Licht auf {self.light_level} %")
-
-# def toggle_light(self, user):
-#     self.light_level = 100
-#     write_log(user, f"{self.name}: Licht auf 100 %")
-
-def control_light(self, handshape, user):
-        if handshape == "index_middle":
-                self["light"] = clamp(self["light"] + STEP)
-                write_log(user, f"{self.name}: Licht auf {self.light_level} %")
-
-
-        elif handshape == "middle":
-                self["light"] = clamp(self["light"] - STEP)
-                write_log(user, f"{self.name}: Licht auf {self.light_level} %")
-
-        elif handshape == "open":
-                self["light"] = 100
-                write_log(user, f"{self.name}: Licht auf {self.light_level} %")
-
-        elif handshape == "fist":
-                self["light"] = 0
-                write_log(user, f"{self.name}: Licht auf {self.light_level} %")
+def control_light(room, handshape, user):
+    """
+    Steuerung des Lichts anhand der Handgesten
+    room: Dictionary mit 'light' und 'name'
+    handshape: erkannte Geste
+    user: aktueller Benutzer
+    """
+    if handshape == "thumb_up":
+        room["light"] = clamp(room["light"] + STEP)
+        write_log(user, f"{room['name']}: Licht auf {room['light']} %")
+    elif handshape == "thumb_down":
+        room["light"] = clamp(room["light"] - STEP)
+        write_log(user, f"{room['name']}: Licht auf {room['light']} %")
+    elif handshape == "fist":
+        room["light"] = 0
+        write_log(user, f"{room['name']}: Licht aus")
+    elif handshape == "pinky":
+        room["light"] = 100
+        write_log(user, f"{room['name']}: Licht an")

@@ -1,36 +1,27 @@
 # Hier nur Rollosteuerung
 
 from logging_system import write_log
-from vision.hand_tracking_neu import clamp
-
-STEP = 5 # Umgerechnet sind das 10 %
-
-# def rollo_up(self, user):
-#         self.rollo_height = max(0, self.rollo_height - STEP)
-#         write_log(user, f"{self.name}: Rollo auf {self.rollo_height} %")
-
-# def rollo_down(self, user):
-#         self.rollo_height = min(self.window.height, self.rollo_height + STEP)
-#         write_log(user, f"{self.name}: Rollo auf {self.rollo_height} %")
-
-# def toggle_close(self,user):
-#         self.rollo_height = self.window.height
-#         write_log(user, f"{self.name}: Rollo auf 100 %")
+from utils import clamp
 
 
-def control_shutter(self, handshape, user):
+STEP = 5  # Prozent-Schritte
+
+def control_shutter(room, handshape, user):
+    """
+    Steuerung des Rollos anhand der Handgesten
+    room: Dictionary mit 'blind' und 'name'
+    handshape: erkannte Geste
+    user: aktueller Benutzer
+    """
     if handshape == "thumb_up":
-        self["blind"] = clamp(self["blind"] + STEP)
-        write_log(user, f"{self.name}: Rollo auf {self.rollo_height} %")
-
-    elif handshape == "thumb_index":
-        self["blind"] = clamp(self["blind"] - STEP)
-        write_log(user, f"{self.name}: Rollo auf {self.rollo_height} %")
-
-    elif handshape == "index":
-        self["blind"] = 100
-        write_log(user, f"{self.name}: Rollo auf {self.rollo_height} %")
-
+        room["blind"] = clamp(room["blind"] - STEP)  # hochfahren = kleiner Wert
+        write_log(user, f"{room['name']}: Rollo auf {room['blind']} %")
+    elif handshape == "thumb_down":
+        room["blind"] = clamp(room["blind"] + STEP)  # runterfahren = größerer Wert
+        write_log(user, f"{room['name']}: Rollo auf {room['blind']} %")
+    elif handshape == "fist":
+        room["blind"] = 0  # Rollo ganz auf
+        write_log(user, f"{room['name']}: Rollo ganz auf")
     elif handshape == "pinky":
-        self["blind"] = 0
-        write_log(user, f"{self.name}: Rollo auf {self.rollo_height} %")
+        room["blind"] = 100  # Rollo ganz zu
+        write_log(user, f"{room['name']}: Rollo ganz zu")

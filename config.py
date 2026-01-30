@@ -6,8 +6,8 @@
 # from ui.shutter_controller import rollo_up, rollo_down, toggle_close
 
 # Fenster
-WIDTH = 800
-HEIGHT = 600
+WIDTH = 1200
+HEIGHT = 700
 FPS = 60
 WINDOW_TITLE = "Schulaufgabe IT"
 
@@ -25,28 +25,5 @@ FONT_SIZE = 36
 # Benutzer
 DEFAULT_USER = None
 
-# -------------------------
-# TASTENBELEGUNG
-# -------------------------
-
-# KEYS = {
-#     # Raum 1 – Wohnküche
-#     pygame.K_q: ("room_1", rollo_up),
-#     pygame.K_a: ("room_1", rollo_down),
-#     pygame.K_y: ("room_1", toggle_close),
-#     pygame.K_w: ("room_1", dim_up),
-#     pygame.K_s: ("room_1", dim_down),
-#     pygame.K_x: ("room_1", toggle_light),
-
-#     # Raum 2 – Schlafzimmer 
-#     pygame.K_e: ("room_2", rollo_up),
-#     pygame.K_d: ("room_2", rollo_down),
-#     pygame.K_c: ("room_2", toggle_close),
-#     pygame.K_r: ("room_2", dim_up),
-#     pygame.K_f: ("room_2", dim_down),
-#     pygame.K_v: ("room_2", toggle_light),
-
-#     # Benutzer wechseln
-#     pygame.K_p: ("user", "user_a"),
-#     pygame.K_o: ("user", "user_b"),
-# }
+def clamp(value):
+    return max(0, min(100, value))
