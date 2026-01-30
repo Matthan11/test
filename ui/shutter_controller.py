@@ -5,22 +5,19 @@ from utils import clamp
 
 STEP = 5 # Umgerechnet sind das 10 %
 
-def control_shutter(room, handshape, user):
+def control_shutter(room, action, user):
     """
     Steuerung des Rollos anhand der Handgesten
     room: Dictionary mit 'blind' und 'name'
     handshape: erkannte Geste
     user: aktueller Benutzer
     """
-    if handshape == "thumb_up":
-        room["blind"] = clamp(room["blind"] - STEP)  # hochfahren = kleiner Wert
-        write_log(user, f"{room['name']}: Rollo auf {room['blind']} %")
-    elif handshape == "thumb_down":
-        room["blind"] = clamp(room["blind"] + STEP)  # runterfahren = größerer Wert
-        write_log(user, f"{room['name']}: Rollo auf {room['blind']} %")
-    elif handshape == "fist":
-        room["blind"] = 0  # Rollo ganz auf
-        write_log(user, f"{room['name']}: Rollo ganz auf")
-    elif handshape == "pinky":
-        room["blind"] = 100  # Rollo ganz zu
-        write_log(user, f"{room['name']}: Rollo ganz zu")
+    if action == "up":
+        room["blind"] = clamp(room["blind"] - 5)
+    elif action == "down":
+        room["blind"] = clamp(room["blind"] + 5)
+    elif action == "open":
+        room["blind"] = 0
+    elif action == "close":
+        room["blind"] = 100
+    write_log(user, f"{room['name']}: Rollo {action}, jetzt {room['blind']}%")

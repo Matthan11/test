@@ -46,11 +46,11 @@ def detect_handshape(f, hand=None):
         return "index"
     if f == [0,1,1,0,0]:
         return "index_middle"
-    if f == [1,0,0,0,0]:  # Daumen
-        if hand and hand.landmark[4].y > hand.landmark[2].y:  # <-- NEU: Daumen runter erkannt
-            return "thumb_down"
-        else:
-            return "thumb_up"
+        if f == [1,0,0,0,0]:  # Daumen
+            if hand and hand.landmark[4].y > hand.landmark[2].y:  # <-- NEU: Daumen runter
+                return "thumb_down"
+            else:
+                return "thumb_up"
     if f == [1,1,0,0,0]:
         return "thumb_index"
     if f == [0,0,1,0,0]:
