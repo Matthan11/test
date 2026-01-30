@@ -22,4 +22,4 @@ def control_light(room, action, user):
         room.light_level = 100
     elif action == "off":
         room.light_level = 0
-    write_log(user, f"{room['name']}: Licht {action}, jetzt {room['light']}%")
+    write_log(user, f"{room.name}: Licht {action}, jetzt {room.light_level}%")

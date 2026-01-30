@@ -20,4 +20,4 @@ def control_shutter(room, action, user):
         room.rollo_height = 0
     elif action == "close":
         room.rollo_height = 100
-    write_log(user, f"{room['name']}: Rollo {action}, jetzt {room['blind']}%")
+    write_log(user, f"{room.name}: Rollo {action}, jetzt {room.rollo_height}%")

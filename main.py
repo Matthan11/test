@@ -64,7 +64,8 @@ while running:
             state,
             current_user,
             selected_room,
-            frame
+            frame,
+            rooms,
         )
 
     # ---------- HINTERGRUND ----------

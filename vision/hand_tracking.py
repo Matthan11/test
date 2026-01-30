@@ -58,9 +58,9 @@ def detect_handshape(f, hand=None):
         return "open"
     if f == [1,0,0,0,0]:    # Daumen
         if hand and hand.landmark[4].y > hand.landmark[2].y:
-            return "thumb_down" # hoch
+            return "thumb_down" # Daumen runter
         else:
-            return "thumb_up"   # runter
+            return "thumb_up"   # Daumen hoch
 
     if f == [0,1,0,0,0]:    # Zeigefinger
         return "index"
@@ -140,7 +140,7 @@ def draw_help(screen, font, state):
 
 
 # ================= State-Machine =================
-def get_gesture_action(state, current_user, selected_room, frame):
+def get_gesture_action(state, current_user, selected_room, frame, rooms):
     """
     Zentrale Zustandslogik
     frame kommt aus main (keine Kamera hier!)
@@ -177,11 +177,13 @@ def get_gesture_action(state, current_user, selected_room, frame):
 
     elif state == ROOM_SELECT:
         if handshape == "index":
-            selected_room = "Raum 1"
+            selected_room = rooms["room_1"]   # <-- Objekt
             state = CONTROL_SELECT
+
         elif handshape == "index_middle":
-            selected_room = "Raum 2"
+            selected_room = rooms["room_2"]   # <-- Objekt
             state = CONTROL_SELECT
+
         elif handshape in ("middle", "thumb_middle"):
             state = USER_SELECT
             current_user = None
