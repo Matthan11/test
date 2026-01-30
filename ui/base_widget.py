@@ -10,14 +10,13 @@ class Room:
     def __init__(self, rect, window_rect, name):
         self.rect = rect
         self.window = window_rect
-        # self.light_on = True
         self.rollo_height = 0
         self.name = name
         self.light_level = 0  # Prozent (100 = voll an)
     
     def draw(self, surface, font):
     
-            # Lichtsteuerung
+        # Lichtsteuerung
         factor = self.light_level / 100  # 0.0 – 1.0
 
         floor_color = (
@@ -73,13 +72,13 @@ def create_rooms():
     room_1 = Room(
         pygame.Rect(50, 100, 700, 230),
         pygame.Rect(100, 110, 150, 50),
-        "Wohnküche"
+        "Kitchen"
     )
 
     room_2 = Room(
         pygame.Rect(50, 330, 700, 220),
         pygame.Rect(520, 490, 150, 50),
-        "Schlafzimmer"
+        "Sleepingroom"
     )
 
     return {

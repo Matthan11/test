@@ -13,11 +13,11 @@ def control_shutter(room, action, user):
     user: aktueller Benutzer
     """
     if action == "up":
-        room.rollo_height = clamp_shutter(room.rollo_height - 5)
+        room.rollo_height = clamp_shutter(room.rollo_height - STEP)
     elif action == "down":
-        room.rollo_height = clamp_shutter(room.rollo_height + 5)
+        room.rollo_height = clamp_shutter(room.rollo_height + STEP)
     elif action == "open":
         room.rollo_height = 0
     elif action == "close":
         room.rollo_height = 50
-    write_log(user, f"{room.name}: Rollo {action}, jetzt {room.rollo_height}%")
+    write_log(user, f"{room.name}: Shutter {action}, now {room.rollo_height}%")

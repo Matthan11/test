@@ -1,13 +1,9 @@
 # Hier kommen Konstanten und Einstellungen rein
 # Modularisierung, Wartbarkeit, Saubere Struktur, Trennung von Logik & Konfiguration
 
-# import pygame
-# from ui.light_controller import dim_up, dim_down,toggle_light
-# from ui.shutter_controller import rollo_up, rollo_down, toggle_close
-
 # Fenster
-WIDTH = 1200
-HEIGHT = 700
+WIDTH = 1600
+HEIGHT = 800
 FPS = 60
 WINDOW_TITLE = "Schulaufgabe IT"
 

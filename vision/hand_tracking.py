@@ -83,7 +83,7 @@ def detect_handshape(f, hand=None):
 # ================= Overlay =================
 def draw_help(screen, font, state):
     """
-    Zeichnet die Hilfe-Anzeige rechts im Fenster
+    Zeichnet die Hilfe-Anzeige rechts unten im Fenster
     """
     x, y = 850, 400
 

@@ -15,11 +15,11 @@ def control_light(room, action, user):
     user: aktueller Benutzer
     """
     if action == "up":
-        room.light_level = clamp_light(room.light_level + 10)
+        room.light_level = clamp_light(room.light_level + STEP)
     elif action == "down":
-        room.light_level = clamp_light(room.light_level - 10)
+        room.light_level = clamp_light(room.light_level - STEP)
     elif action == "on":
         room.light_level = 100
     elif action == "off":
         room.light_level = 0
-    write_log(user, f"{room.name}: Licht {action}, jetzt {room.light_level}%")
+    write_log(user, f"{room.name}: Light {action}, now {room.light_level}%")
