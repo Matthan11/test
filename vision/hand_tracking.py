@@ -90,44 +90,44 @@ def draw_help(screen, font, state):
     if state == USER_SELECT:
         lines = [
             "USER WAHL:",
-            "☝ Zeigefinger → User 1",
-            "✌ Zeigefinger+Mittel → User 2"
+            "Zeigefinger → User 1",
+            "Zeige- & Mittelfinger → User 2"
         ]
 
     elif state == ROOM_SELECT:
         lines = [
             "RAUM WAHL:",
-            "☝ Zeigefinger → Raum 1",
-            "✌ Zeigefinger+Mittel → Raum 2",
-            "🖕 Mittelfinger → Zurück"
+            "Zeigefinger → Raum 1",
+            "Zeige- & Mittelfinger → Raum 2",
+            "Daumen und Mittelfinger → Zurück"
         ]
 
     elif state == CONTROL_SELECT:
         lines = [
             "STEUERUNG:",
-            "☝ Zeigefinger → Licht",
-            "✌ Zeigefinger+Mittel → Rollo",
-            "🖕 Mittelfinger → Zurück"
+            "Zeigefinger → Licht",
+            "Zeige- & Mittelfinger → Rollo",
+            "Mittelfinger → Zurück"
         ]
 
     elif state == LIGHT_CONTROL:
         lines = [
             "LICHT:",
-            "👍 Heller",
-            "👎 Dunkler",
-            "✊ Aus",
-            "🤙 An",
-            "🖕 Zurück"
+            "Daumen hoch → Heller",
+            "Daumen runter → Dunkler",
+            "Alle Finger → Licht komplett aus",
+            "Kleinerfinger → Licht komplett an",
+            "Mittelfinger → Zurück"
         ]
 
     elif state == SHUTTER_CONTROL:
         lines = [
             "ROLLO:",
-            "👍 Hoch",
-            "👎 Runter",
-            "✊ Auf",
-            "🤙 Zu",
-            "🖕 Zurück"
+            "Daumen hoch → Rollo hoch",
+            "Daumen runter → Rollo runter",
+            "Alle Finger → Rollo komplett auf",
+            "Kleinerfinger → Rollo komplett zu",
+            "Mittelfinger → Zurück"
         ]
 
     else:
@@ -184,7 +184,7 @@ def get_gesture_action(state, current_user, selected_room, frame, rooms):
             selected_room = rooms["room_2"]   # <-- Objekt
             state = CONTROL_SELECT
 
-        elif handshape in ("middle", "thumb_middle"):
+        elif handshape in ("thumb_middle"):
             state = USER_SELECT
             current_user = None
             selected_room = None
@@ -203,7 +203,7 @@ def get_gesture_action(state, current_user, selected_room, frame, rooms):
             control_light(selected_room, "up", current_user)
         elif handshape == "thumb_down":
             control_light(selected_room, "down", current_user)
-        elif handshape == "fist":
+        elif handshape == "open":
             control_light(selected_room, "off", current_user)
         elif handshape == "pinky":
             control_light(selected_room, "on", current_user)
@@ -215,7 +215,7 @@ def get_gesture_action(state, current_user, selected_room, frame, rooms):
             control_shutter(selected_room, "up", current_user)
         elif handshape == "thumb_down":
             control_shutter(selected_room, "down", current_user)
-        elif handshape == "fist":
+        elif handshape == "open":
             control_shutter(selected_room, "open", current_user)
         elif handshape == "pinky":
             control_shutter(selected_room, "close", current_user)
