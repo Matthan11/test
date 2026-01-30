@@ -2,106 +2,134 @@ import cv2
 import mediapipe as mp
 import time
 
+# Steuerungsmodule
 from ui.light_controller import control_light
 from ui.shutter_controller import control_shutter
-from utils import clamp
 
 # ================= MediaPipe =================
+# Initialisierung der Handerkennung (KEINE Kamera hier!)
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
-    max_num_hands=1,
-    min_detection_confidence=0.7,
-    min_tracking_confidence=0.7
+    max_num_hands=1,                  # Nur eine Hand erkennen
+    min_detection_confidence=0.7,     # Mindest-Erkennungswahrscheinlichkeit
+    min_tracking_confidence=0.7       # Mindest-Tracking-Stabilität
 )
 
 # ================= STATES =================
+# Zustände der State-Machine
 USER_SELECT = "user_select"
 ROOM_SELECT = "room_select"
 CONTROL_SELECT = "control_select"
 LIGHT_CONTROL = "light_control"
 SHUTTER_CONTROL = "shutter_control"
 
+# Cooldown gegen Mehrfachauslösung
 COOLDOWN = 1.2
 last_action_time = 0
 
+
 # ================= Finger-Erkennung =================
 def fingers_up(hand):
+    """
+    Gibt eine Liste mit 5 Werten zurück (Daumen → kleiner Finger)
+    1 = Finger oben, 0 = Finger unten
+    """
     fingers = []
-    # Daumen
+
+    # Daumen (horizontal)
     fingers.append(1 if hand.landmark[4].x < hand.landmark[3].x else 0)
-    # Andere Finger
+
+    # Andere Finger (vertikal)
     for tip in [8, 12, 16, 20]:
         fingers.append(1 if hand.landmark[tip].y < hand.landmark[tip - 2].y else 0)
+
     return fingers
 
 
 # ================= Handshape-Erkennung =================
 def detect_handshape(f, hand=None):
-    """Erkennt alle Gesten inklusive Daumen runter"""
-    if f == [0,0,0,0,0]:
+    """
+    Wandelt Finger-Muster in eine Geste um
+    """
+    if f == [0,0,0,0,0]:    # Faust
         return "fist"
-    if f == [1,1,1,1,1]:
+
+    if f == [1,1,1,1,1]:    # Alle Finger
         return "open"
-    if f == [0,1,0,0,0]:
-        return "index"
-    if f == [0,1,1,0,0]:
-        return "index_middle"
-    if f == [1,0,0,0,0]:  # Daumen
-        if hand and hand.landmark[4].y > hand.landmark[2].y:  # <-- NEU: Daumen runter
-            return "thumb_down"
+    if f == [1,0,0,0,0]:    # Daumen
+        if hand and hand.landmark[4].y > hand.landmark[2].y:
+            return "thumb_down" # hoch
         else:
-                return "thumb_up"
-    if f == [1,1,0,0,0]:
-        return "thumb_index"
-    if f == [0,0,1,0,0]:
-        return "middle"  # Mittelfinger → zurück von Steuerung zu Raumwahl
-    if f == [0,0,0,0,1]:
-        return "pinky"   # kleiner Finger
-    if f == [1,0,1,0,0]:
-        return "thumb_middle"  # Daumen + Mittelfinger → zurück von Raumwahl zu Userwahl
+            return "thumb_up"   # runter
+
+    if f == [0,1,0,0,0]:    # Zeigefinger
+        return "index"
+
+    if f == [0,1,1,0,0]:    # Zeigefinger und Mittelfinger
+        return "index_middle"
+
+    if f == [0,0,1,0,0]:    # Mittelfinger
+        return "middle"
+
+    if f == [0,0,0,0,1]:    # Kleinerfinger
+        return "pinky"
+
+    if f == [1,0,1,0,0]:    # Daumen und Mittelfinger
+        return "thumb_middle"
+
     return "other"
+
 
 # ================= Overlay =================
 def draw_help(screen, font, state):
+    """
+    Zeichnet die Hilfe-Anzeige rechts im Fenster
+    """
     x, y = 850, 100
+
     if state == USER_SELECT:
         lines = [
             "USER WAHL:",
             "☝ Zeigefinger → User 1",
             "✌ Zeigefinger+Mittel → User 2"
         ]
+
     elif state == ROOM_SELECT:
         lines = [
             "RAUM WAHL:",
             "☝ Zeigefinger → Raum 1",
             "✌ Zeigefinger+Mittel → Raum 2",
-            "🖕 Mittelfinger → Zurück zu Userwahl"
+            "🖕 Mittelfinger → Zurück"
         ]
+
     elif state == CONTROL_SELECT:
         lines = [
             "STEUERUNG:",
-            "☝ Zeigefinger → Lichtsteuerung",
-            "✌ Zeigefinger+Mittel → Rollosteuerung",
-            "🖕 Mittelfinger → Zurück zu Raumwahl"
+            "☝ Zeigefinger → Licht",
+            "✌ Zeigefinger+Mittel → Rollo",
+            "🖕 Mittelfinger → Zurück"
         ]
+
     elif state == LIGHT_CONTROL:
         lines = [
             "LICHT:",
-            "👍 Daumen hoch → Heller",
-            "👎 Daumen runter → Dunkler",
-            "✊ Faust → Aus",
-            "🤙 Kleiner Finger → An",
-            "🖕 Mittelfinger → Zurück"
+            "👍 Heller",
+            "👎 Dunkler",
+            "✊ Aus",
+            "🤙 An",
+            "🖕 Zurück"
         ]
+
     elif state == SHUTTER_CONTROL:
         lines = [
             "ROLLO:",
-            "👍 Daumen hoch → Hoch",
-            "👎 Daumen runter → Runter",
-            "✊ Faust → Auf",
-            "🤙 Kleiner Finger → Zu",
-            "🖕 Mittelfinger → Zurück"
+            "👍 Hoch",
+            "👎 Runter",
+            "✊ Auf",
+            "🤙 Zu",
+            "🖕 Zurück"
         ]
+
     else:
         lines = ["Unbekannter State"]
 
@@ -110,24 +138,35 @@ def draw_help(screen, font, state):
         screen.blit(txt, (x, y))
         y += 30
 
-# ================= Hauptfunktion =================
-cap = cv2.VideoCapture(0)
 
-def get_gesture_action(state, current_user, selected_room, handshape):
+# ================= State-Machine =================
+def get_gesture_action(state, current_user, selected_room, frame):
+    """
+    Zentrale Zustandslogik
+    frame kommt aus main (keine Kamera hier!)
+    """
     global last_action_time
 
+    # Bild spiegeln (natürliche Bewegung)
     frame = cv2.flip(frame, 1)
+
+    # In RGB umwandeln (MediaPipe erwartet RGB)
     rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     result = hands.process(rgb)
+
     now = time.time()
 
+    # Keine Hand oder Cooldown aktiv → nichts tun
     if not result.multi_hand_landmarks or now - last_action_time < COOLDOWN:
         return state, current_user, selected_room, None
 
+    # Erste erkannte Hand verwenden
     hand = result.multi_hand_landmarks[0]
-    handshape = detect_handshape(fingers_up(hand), hand)  # <-- NEU: hand übergeben für Daumen runter
 
-    # ------------------ STATE MACHINE ------------------
+    # Geste erkennen
+    handshape = detect_handshape(fingers_up(hand), hand)
+
+    # ================= STATE MACHINE =================
     if state == USER_SELECT:
         if handshape == "index":
             current_user = "User 1"
@@ -143,7 +182,7 @@ def get_gesture_action(state, current_user, selected_room, handshape):
         elif handshape == "index_middle":
             selected_room = "Raum 2"
             state = CONTROL_SELECT
-        elif handshape == "middle" or handshape == "thumb_middle":  # <-- NEU: beide zurück zur Userwahl
+        elif handshape in ("middle", "thumb_middle"):
             state = USER_SELECT
             current_user = None
             selected_room = None
@@ -153,7 +192,7 @@ def get_gesture_action(state, current_user, selected_room, handshape):
             state = LIGHT_CONTROL
         elif handshape == "index_middle":
             state = SHUTTER_CONTROL
-        elif handshape == "middle":  # zurück
+        elif handshape == "middle":
             state = ROOM_SELECT
             selected_room = None
 
@@ -166,7 +205,7 @@ def get_gesture_action(state, current_user, selected_room, handshape):
             control_light(selected_room, "off", current_user)
         elif handshape == "pinky":
             control_light(selected_room, "on", current_user)
-        elif handshape == "middle":  # zurück
+        elif handshape == "middle":
             state = CONTROL_SELECT
 
     elif state == SHUTTER_CONTROL:
@@ -178,8 +217,10 @@ def get_gesture_action(state, current_user, selected_room, handshape):
             control_shutter(selected_room, "open", current_user)
         elif handshape == "pinky":
             control_shutter(selected_room, "close", current_user)
-        elif handshape == "middle":  # zurück
+        elif handshape == "middle":
             state = CONTROL_SELECT
 
+    # Cooldown-Zeit merken
     last_action_time = now
+
     return state, current_user, selected_room, handshape
