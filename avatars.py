@@ -77,13 +77,19 @@ class Avatar:
         """
         self.name = name
         self.color = color
-        self.x, self.y = position
+
+        # ORIGINAL-POSITION
+        self.base_x, self.y = position
+
+        # FESTE VERSCHIEBUNG NACH RECHTS
+        self.offset_x = 200   # <<<<<< HIER kannst du den Wert ändern
+
         self.style = style
         self.active = False
 
-    def draw(self, screen, font, offset_x=0):
-        # === POSITION MIT OFFSET ===
-        x = self.x + offset_x
+    def draw(self, screen, font):
+        # === ENDGÜLTIGE POSITION ===
+        x = self.base_x + self.offset_x
         y = self.y
 
         body_color = self.color if self.active else (130, 130, 130)
@@ -92,7 +98,6 @@ class Avatar:
         # === HAARE oder CAP ===
         if self.style == "hair":
             self._draw_hair(screen, head_pos)
-
         elif self.style == "cap":
             self._draw_cap(screen, head_pos)
 
@@ -113,7 +118,6 @@ class Avatar:
     # ================= STYLES =================
 
     def _draw_hair(self, screen, head_pos):
-        """Offene Haare"""
         x, y = head_pos
         hair_color = (80, 40, 20)
 
@@ -121,11 +125,9 @@ class Avatar:
         pygame.draw.rect(screen, hair_color, (x - 20, y - 6, 40, 20))
 
     def _draw_cap(self, screen, head_pos):
-        """Cap"""
         x, y = head_pos
         cap_color = (40, 40, 40)
 
-        # Cap-Kuppel
         pygame.draw.arc(
             screen,
             cap_color,
@@ -134,5 +136,4 @@ class Avatar:
             4
         )
 
-        # Schirm
         pygame.draw.rect(screen, cap_color, (x, y - 5, 18, 6))
