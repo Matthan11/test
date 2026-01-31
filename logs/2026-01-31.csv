@@ -1936,3 +1936,166 @@ User 1,User 1 returned to USER_SELECT,2026-01-31,16:06:33
 User 2,login User 2,2026-01-31,16:06:33
 User 2,User 2 selected Sleepingroom,2026-01-31,16:06:33
 User 2,User 2 returned to USER_SELECT,2026-01-31,16:06:33
+User 1,login User 1,2026-01-31,16:07:54
+User 1,User 1 selected Kitchen,2026-01-31,16:07:54
+User 1,"Kitchen: Light up, now 10%",2026-01-31,16:07:54
+User 1,"Kitchen: Light up, now 20%",2026-01-31,16:07:54
+User 1,"Kitchen: Light up, now 30%",2026-01-31,16:07:54
+User 1,"Kitchen: Light up, now 40%",2026-01-31,16:07:54
+User 1,"Kitchen: Light up, now 50%",2026-01-31,16:07:54
+User 1,"Kitchen: Light up, now 60%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 70%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 80%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 90%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light up, now 100%",2026-01-31,16:07:55
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:55
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:55
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:55
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:55
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:55
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:55
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:56
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:56
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:57
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:07:58
+User 1,"Kitchen: Light down, now 0%",2026-01-31,16:07:58
+User 1,User 1 selected Kitchen,2026-01-31,16:08:01
+User 1,"Kitchen: Shutter down, now 5%",2026-01-31,16:08:01
+User 1,"Kitchen: Shutter down, now 10%",2026-01-31,16:08:01
+User 1,"Kitchen: Shutter down, now 15%",2026-01-31,16:08:01
+User 1,"Kitchen: Shutter down, now 20%",2026-01-31,16:08:02
+User 1,"Kitchen: Shutter up, now 15%",2026-01-31,16:08:02
+User 1,"Kitchen: Shutter open, now 0%",2026-01-31,16:08:02
+User 1,"Kitchen: Shutter close, now 50%",2026-01-31,16:08:02
+User 1,User 1 selected Sleepingroom,2026-01-31,16:08:02
+User 1,"Sleepingroom: Shutter down, now 5%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 10%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 15%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 20%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 25%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 30%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 35%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 40%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 45%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:03
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,User 1 selected Sleepingroom,2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:04
+User 1,User 1 selected Sleepingroom,2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,User 1 selected Sleepingroom,2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:05
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:06
+User 1,"Sleepingroom: Shutter down, now 50%",2026-01-31,16:08:06
+User 1,User 1 selected Kitchen,2026-01-31,16:08:15
+User 1,"Kitchen: Light up, now 10%",2026-01-31,16:08:15
+User 1,"Kitchen: Light down, now 0%",2026-01-31,16:08:15
+User 1,"Kitchen: Light down, now 0%",2026-01-31,16:08:15
+User 1,User 1 selected Sleepingroom,2026-01-31,16:08:16
+User 1,User 1 selected Sleepingroom,2026-01-31,16:08:16
+User 1,User 1 selected Sleepingroom,2026-01-31,16:08:16
+User 1,User 1 selected Sleepingroom,2026-01-31,16:08:16
+User 1,User 1 returned to USER_SELECT,2026-01-31,16:08:17
+User 1,login User 1,2026-01-31,16:08:19
+User 1,User 1 selected Kitchen,2026-01-31,16:08:19
+User 1,"Kitchen: Light up, now 10%",2026-01-31,16:08:19
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:08:21
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:08:21
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:08:21
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:08:21
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:08:21
+User 1,"Kitchen: Light off, now 0%",2026-01-31,16:08:21
+User 1,"Kitchen: Light up, now 10%",2026-01-31,16:08:21
+User 1,"Kitchen: Light up, now 20%",2026-01-31,16:08:21

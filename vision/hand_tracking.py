@@ -26,7 +26,7 @@ LIGHT_CONTROL = "light_control"
 SHUTTER_CONTROL = "shutter_control"
 
 # Cooldown gegen Mehrfachauslösung
-COOLDOWN = 10
+COOLDOWN = 1.2
 last_action_time = 0
 
 
