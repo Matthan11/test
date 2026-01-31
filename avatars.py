@@ -82,7 +82,7 @@ class Avatar:
         self.base_x, self.y = position
 
         # FESTE VERSCHIEBUNG NACH RECHTS
-        self.offset_x = 200   # <<<<<< HIER kannst du den Wert ändern
+        self.offset_x = 500  # <<<<<< HIER kannst du den Wert ändern
 
         self.style = style
         self.active = False
