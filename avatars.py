@@ -12,7 +12,10 @@ class Avatar:
         self.style = style
         self.active = False
 
-    def draw(self, screen, font):
+    def draw(self, screen, font, offset_x=100):
+        x = self.x +offset_x
+        y = self.y
+
         body_color = self.color if self.active else (130, 130, 130)
         head_pos = (self.x, self.y - 30)
 
