@@ -12,7 +12,7 @@ class Avatar:
         self.style = style
         self.active = False
 
-    def draw(self, screen, font, offset_x=100):
+    def draw(self, screen, font, offset_x=500):
         x = self.x +offset_x
         y = self.y
 
