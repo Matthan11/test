@@ -1241,3 +1241,23 @@ User 2,"Sleepingroom: Shutter up, now 45%",2026-02-01,19:42:46
 User 2,"Sleepingroom: Shutter up, now 40%",2026-02-01,19:42:47
 User 2,"Sleepingroom: Shutter up, now 35%",2026-02-01,19:42:48
 User 2,User 2 returned to USER_SELECT,2026-02-01,19:42:52
+User 1,login User 1,2026-02-01,20:43:22
+User 1,User 1 returned to USER_SELECT,2026-02-01,20:43:35
+User 1,login User 1,2026-02-01,20:44:01
+User 1,User 1 selected Kitchen,2026-02-01,20:44:08
+User 1,"Kitchen: Shutter close, now 50%",2026-02-01,20:44:35
+User 1,"Kitchen: Shutter open, now 0%",2026-02-01,20:44:38
+User 1,"Kitchen: Shutter up, now 0%",2026-02-01,20:44:40
+User 1,"Kitchen: Shutter up, now 0%",2026-02-01,20:44:41
+User 1,"Kitchen: Shutter up, now 0%",2026-02-01,20:44:42
+User 1,"Kitchen: Shutter up, now 0%",2026-02-01,20:44:44
+User 1,"Kitchen: Shutter down, now 5%",2026-02-01,20:44:49
+User 1,"Kitchen: Shutter down, now 10%",2026-02-01,20:44:50
+User 1,"Kitchen: Shutter up, now 5%",2026-02-01,20:44:51
+User 1,"Kitchen: Shutter up, now 0%",2026-02-01,20:44:53
+User 1,"Kitchen: Shutter down, now 5%",2026-02-01,20:44:54
+User 1,"Kitchen: Shutter down, now 10%",2026-02-01,20:44:55
+User 1,"Kitchen: Shutter down, now 15%",2026-02-01,20:44:56
+User 1,"Kitchen: Shutter down, now 20%",2026-02-01,20:44:58
+User 1,"Kitchen: Shutter down, now 25%",2026-02-01,20:44:59
+User 1,"Kitchen: Shutter down, now 30%",2026-02-01,20:45:00
