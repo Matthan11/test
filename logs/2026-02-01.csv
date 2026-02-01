@@ -1261,3 +1261,38 @@ User 1,"Kitchen: Shutter down, now 15%",2026-02-01,20:44:56
 User 1,"Kitchen: Shutter down, now 20%",2026-02-01,20:44:58
 User 1,"Kitchen: Shutter down, now 25%",2026-02-01,20:44:59
 User 1,"Kitchen: Shutter down, now 30%",2026-02-01,20:45:00
+User 2,login User 2,2026-02-01,21:19:47
+User 2,User 2 selected Sleepingroom,2026-02-01,21:19:48
+User 2,"Sleepingroom: Light on, now 100%",2026-02-01,21:19:55
+User 2,User 2 selected Sleepingroom,2026-02-01,21:20:02
+User 2,"Sleepingroom: Shutter close, now 50%",2026-02-01,21:20:09
+User 2,"Sleepingroom: Shutter open, now 0%",2026-02-01,21:20:13
+User 2,"Sleepingroom: Light up, now 100%",2026-02-01,21:20:20
+User 2,"Sleepingroom: Light up, now 100%",2026-02-01,21:20:22
+User 2,"Sleepingroom: Light down, now 90%",2026-02-01,21:20:23
+User 2,"Sleepingroom: Light down, now 80%",2026-02-01,21:20:24
+User 2,"Sleepingroom: Light down, now 70%",2026-02-01,21:20:25
+User 2,"Sleepingroom: Light down, now 60%",2026-02-01,21:20:27
+User 2,"Sleepingroom: Light down, now 50%",2026-02-01,21:20:28
+User 2,"Sleepingroom: Light on, now 100%",2026-02-01,21:20:29
+User 2,"Sleepingroom: Light off, now 0%",2026-02-01,21:20:30
+User 2,User 2 selected Kitchen,2026-02-01,21:20:38
+User 2,User 2 selected Kitchen,2026-02-01,21:20:48
+User 2,"Kitchen: Light on, now 100%",2026-02-01,21:20:51
+User 2,"Kitchen: Light off, now 0%",2026-02-01,21:20:52
+User 2,"Kitchen: Shutter close, now 50%",2026-02-01,21:20:57
+User 2,"Kitchen: Shutter open, now 0%",2026-02-01,21:20:59
+User 2,"Kitchen: Shutter close, now 50%",2026-02-01,21:21:14
+User 2,"Kitchen: Shutter down, now 50%",2026-02-01,21:21:15
+User 2,User 2 returned to USER_SELECT,2026-02-01,21:21:31
+User 1,login User 1,2026-02-01,21:21:39
+User 1,User 1 selected Kitchen,2026-02-01,21:21:41
+User 1,"Kitchen: Shutter down, now 50%",2026-02-01,21:21:43
+User 1,"Kitchen: Shutter open, now 0%",2026-02-01,21:21:50
+User 1,"Kitchen: Shutter close, now 50%",2026-02-01,21:21:55
+User 1,"Kitchen: Shutter down, now 50%",2026-02-01,21:21:58
+User 1,"Kitchen: Shutter down, now 50%",2026-02-01,21:22:01
+User 1,"Kitchen: Light up, now 10%",2026-02-01,21:22:10
+User 1,"Kitchen: Light down, now 0%",2026-02-01,21:22:11
+User 1,"Kitchen: Light on, now 100%",2026-02-01,21:22:18
+User 1,"Kitchen: Light up, now 100%",2026-02-01,21:22:22

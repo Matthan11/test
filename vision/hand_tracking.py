@@ -3,8 +3,8 @@ import mediapipe as mp
 import time
 
 # Steuerungsmodule
-from ui.light_controller import control_light
-from ui.shutter_controller import control_shutter
+from ui.control_light import control_light
+from ui.control_shutter import control_shutter
 from logging_system import write_log
 
 # ================= MediaPipe =================
@@ -104,38 +104,38 @@ def draw_help(screen, font, state):
     elif state == ROOM_SELECT:
         lines = [
             "ROOM SELECT:",
-            "Indexfinger --> Kitchen",                          # Weiter zu room_1
-            "Index- + Middlefinger --> Sleepingroom",           # Weiter zu room_2
-            "Thumb + Middle- + Pinkyfinger --> Return"          # Zurück zu USER_SELECT
+            "Indexfinger                    --> Kitchen",           # Weiter zu room_1
+            "Index- + Middlefinger          --> Sleepingroom",      # Weiter zu room_2
+            "Thumb + Middle- + Pinkyfinger  --> Return"             # Zurück zu USER_SELECT
         ]
 
     # Steuerungs auswahl
     elif state == CONTROL_SELECT:
         lines = [
             "CONTROL:",
-            "Index --> Light",                                  # Weiter zu light_controller
-            "Index- + Middlefinger --> Shutter",                # Weiter zu shutter_controller
-            "Thumb + Middlefinger --> Return"                   # Zurück zu ROOM_SELECT
+            "Index                  --> Light",                     # Weiter zu control_light
+            "Index- + Middlefinger  --> Shutter",                   # Weiter zu control_shutter
+            "Thumb + Middlefinger   --> Return"                     # Zurück zu ROOM_SELECT
         ]
 
     elif state == LIGHT_CONTROL:
         lines = [
             "LIGHT CONTROL:",
-            "Index --> Dim the light brighter",                 # Licht heller dimmen
-            "Index- + Middlefinger --> Dim the light darker",   # Licht dunkler dimmen
-            "Open (allfingers) --> Light completely off",       # Licht komplett ausschalten
-            "Kleinerfinger --> Lights completely on",           # Licht komplett anschalten
-            "Middlefinger --> Retrun"                           # Zurück zu CONTROL_SELECT
+            "Index                  --> Dim the light brighter",    # Licht heller dimmen
+            "Index- + Middlefinger  --> Dim the light darker",      # Licht dunkler dimmen
+            "Open (allfingers)      --> Light completely off",      # Licht komplett ausschalten
+            "Pinky                  --> Lights completely on",      # Licht komplett anschalten
+            "Middlefinger --> Retrun"                               # Zurück zu CONTROL_SELECT
         ]
 
     elif state == SHUTTER_CONTROL:
         lines = [
             "SHUTTER CONTROL:",
-            "Index --> raise the Shutter",                      # Rollo öffnen
-            "Index- + Middlefinger --> close the Shutter",      # Rollo schließen
-            "Open (allfingers) --> Shutter completely open",    # Rollo komplett öffnen
-            "Pinky --> Shutter completely closed",              # Rollo komplett schließen
-            "Middlefinger --> Return"                           # Zurück zu CONTROL_SELECT
+            "Index                  --> raise the Shutter",         # Rollo öffnen
+            "Index- + Middlefinger  --> close the Shutter",         # Rollo schließen
+            "Open (allfingers)      --> Shutter completely open",   # Rollo komplett öffnen
+            "Pinky                  --> Shutter completely closed", # Rollo komplett schließen
+            "Middlefinger           --> Return"                     # Zurück zu CONTROL_SELECT
         ]
 
     else:
