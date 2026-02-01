@@ -101,10 +101,10 @@ def draw_help(screen, font, state):
 
     elif state == ROOM_SELECT:
         lines = [
-            "RAUM WAHL:",
-            "Zeigefinger --> Raum 1",
-            "Zeige- & Mittelfinger --> Raum 2",
-            "Daumen , Mittel- und Kleinerfinger --> Zurück"
+            "Choos Room:",
+            "Indexfinger --> Kitchen",                      # room_1
+            "Zeige- & Mittelfinger --> Raum 2",             # room_2
+            "Daumen , Mittel- und Kleinerfinger --> Zurück" #
         ]
 
     elif state == CONTROL_SELECT:
