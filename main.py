@@ -111,23 +111,23 @@ while running:
 
     # ---------- STATUSANZEIGE ----------
     user_text = font.render(
-        f"Aktueller Benutzer: {current_user or '---'}",
+        f"Current user: {current_user or '---'}",
         True,
         (255, 255, 255)
     )
     screen.blit(user_text, (20, 20))
 
+    if selected_room:   # Statusanzeige Raum
+        room_text = font.render(
+            f"Current room: {selected_room.name}",
+            True,
+            (255, 255, 255)
+        )
+        screen.blit(room_text, (20, 60))
+
     #---------- AVATARE ZEICHNEN ----------
     for avatar in avatars.values():
         avatar.draw(screen, font)
-
-    if selected_room:
-        room_text = font.render(
-            f"Aktueller Raum: {selected_room.name}",
-            True,
-            (255, 255, 0)
-        )
-        screen.blit(room_text, (20, 60))
 
     # ---------- LIVE-KAMERABILD ----------
     if ret:

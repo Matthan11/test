@@ -92,51 +92,54 @@ def draw_help(screen, font, state):
     """
     x, y = 850, 400
 
+    # Bentzer auswahl
     if state == USER_SELECT:
         lines = [
-            "USER WAHL:",
-            "Zeigefinger --> User 1",
-            "Zeige- & Mittelfinger --> User 2"
+            "USER SELECT:",
+            "Indexfinger --> User 1",                           # user_1
+            "Index- + Middlefinger --> User 2"                  # user_2
         ]
-
+    
+    # Raum auswahl
     elif state == ROOM_SELECT:
         lines = [
-            "Choos Room:",
-            "Indexfinger --> Kitchen",                      # room_1
-            "Zeige- & Mittelfinger --> Raum 2",             # room_2
-            "Daumen , Mittel- und Kleinerfinger --> Zurück" #
+            "ROOM SELECT:",
+            "Indexfinger --> Kitchen",                          # Weiter zu room_1
+            "Index- + Middlefinger --> Sleepingroom",           # Weiter zu room_2
+            "Thumb + Middle- + Pinkyfinger --> Return"          # Zurück zu USER_SELECT
         ]
 
+    # Steuerungs auswahl
     elif state == CONTROL_SELECT:
         lines = [
-            "STEUERUNG:",
-            "Zeigefinger --> Licht",
-            "Zeige- & Mittelfinger --> Rollo",
-            "Daumen und Mittelfinger --> Zurück"
+            "CONTROL:",
+            "Index --> Light",                                  # Weiter zu light_controller
+            "Index- + Middlefinger --> Shutter",                # Weiter zu shutter_controller
+            "Thumb + Middlefinger --> Return"                   # Zurück zu ROOM_SELECT
         ]
 
     elif state == LIGHT_CONTROL:
         lines = [
-            "LICHT:",
-            "Zeigefinger --> Heller",
-            "Zeige- & Mittelfinger --> Dunkler",
-            "Alle Finger --> Licht komplett aus",
-            "Kleinerfinger --> Licht komplett an",
-            "Mittelfinger --> Zurück"
+            "LIGHT CONTROL:",
+            "Index --> Dim the light brighter",                 # Licht heller dimmen
+            "Index- + Middlefinger --> Dim the light darker",   # Licht dunkler dimmen
+            "Open (allfingers) --> Light completely off",       # Licht komplett ausschalten
+            "Kleinerfinger --> Lights completely on",           # Licht komplett anschalten
+            "Middlefinger --> Retrun"                           # Zurück zu CONTROL_SELECT
         ]
 
     elif state == SHUTTER_CONTROL:
         lines = [
-            "ROLLO:",
-            "Zeigefinger --> Rollo hoch",
-            "Zeige- & Mittelfinger --> Rollo runter",
-            "Alle Finger --> Rollo komplett auf",
-            "Kleinerfinger --> Rollo komplett zu",
-            "Mittelfinger --> Zurück"
+            "SHUTTER CONTROL:",
+            "Index --> raise the Shutter",                      # Rollo öffnen
+            "Index- + Middlefinger --> close the Shutter",      # Rollo schließen
+            "Open (allfingers) --> Shutter completely open",    # Rollo komplett öffnen
+            "Pinky --> Shutter completely closed",              # Rollo komplett schließen
+            "Middlefinger --> Return"                           # Zurück zu CONTROL_SELECT
         ]
 
     else:
-        lines = ["Unbekannter State"]
+        lines = ["Unknown State"]
 
     for line in lines:
         txt = font.render(line, True, (255, 255, 255))
