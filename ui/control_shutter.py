@@ -1,7 +1,8 @@
+# Erstellt von Jannik Langhammer
 # Hier nur Rollosteuerung
 
 from logging_system import write_log
-from utils import clamp_shutter
+from ui.utils import clamp_shutter
 
 STEP = 5 # Umgerechnet sind das 10 %
 
