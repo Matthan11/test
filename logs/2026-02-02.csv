@@ -21,3 +21,14 @@ User 1,"Kitchen: Shutter down, now 5%",2026-02-02,07:47:54
 User 1,"Kitchen: Shutter down, now 10%",2026-02-02,07:47:55
 User 1,"Kitchen: Shutter down, now 15%",2026-02-02,07:47:56
 User 1,User 1 returned to USER_SELECT,2026-02-02,07:48:01
+User 1,login User 1,2026-02-02,08:56:46
+User 1,User 1 selected Kitchen,2026-02-02,08:56:49
+User 1,"Kitchen: Light up, now 10%",2026-02-02,08:56:57
+User 1,"Kitchen: Light up, now 20%",2026-02-02,08:56:58
+User 1,"Kitchen: Light up, now 30%",2026-02-02,08:57:00
+User 1,"Kitchen: Light down, now 20%",2026-02-02,08:57:01
+User 1,"Kitchen: Light down, now 10%",2026-02-02,08:57:02
+User 1,"Kitchen: Light off, now 0%",2026-02-02,08:57:03
+User 1,"Kitchen: Light on, now 100%",2026-02-02,08:57:04
+User 1,"Kitchen: Light off, now 0%",2026-02-02,08:57:06
+User 1,User 1 returned to USER_SELECT,2026-02-02,08:57:13

@@ -18,4 +18,4 @@ Licht und Rollos gesteuert werden können.
 - logging_system.py → CSV-Logging
 - vision/ → Handtracking & State-Machine
 - ui/ → Grafische Darstellung & Steuerung
-
+- 
