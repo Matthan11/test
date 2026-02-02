@@ -93,3 +93,52 @@ User 2,"Sleepingroom: Shutter open, now 0%",2026-02-02,09:48:13
 User 2,"Sleepingroom: Shutter open, now 0%",2026-02-02,09:48:14
 User 2,"Sleepingroom: Shutter open, now 0%",2026-02-02,09:48:15
 User 2,"Sleepingroom: Shutter open, now 0%",2026-02-02,09:48:17
+User 1,login User 1,2026-02-02,10:21:42
+User 1,User 1 selected Kitchen,2026-02-02,10:21:46
+User 1,"Kitchen: Light down, now 0%",2026-02-02,10:21:50
+User 1,User 1 returned to USER_SELECT,2026-02-02,10:21:55
+User 2,login User 2,2026-02-02,10:22:05
+User 2,User 2 selected Sleepingroom,2026-02-02,10:22:08
+User 2,User 2 returned to USER_SELECT,2026-02-02,10:22:17
+User 1,login User 1,2026-02-02,10:22:20
+User 1,User 1 selected Sleepingroom,2026-02-02,10:22:27
+User 1,"Sleepingroom: Shutter up, now 0%",2026-02-02,10:22:37
+User 1,"Sleepingroom: Shutter up, now 0%",2026-02-02,10:22:38
+User 1,"Sleepingroom: Shutter up, now 0%",2026-02-02,10:22:39
+User 1,"Sleepingroom: Shutter up, now 0%",2026-02-02,10:22:40
+User 1,"Sleepingroom: Shutter up, now 0%",2026-02-02,10:22:42
+User 1,"Sleepingroom: Shutter up, now 0%",2026-02-02,10:22:43
+User 1,"Sleepingroom: Shutter up, now 0%",2026-02-02,10:22:44
+User 1,"Sleepingroom: Shutter down, now 5%",2026-02-02,10:22:49
+User 1,"Sleepingroom: Shutter down, now 10%",2026-02-02,10:22:50
+User 1,"Sleepingroom: Shutter down, now 15%",2026-02-02,10:22:52
+User 1,"Sleepingroom: Shutter down, now 20%",2026-02-02,10:22:53
+User 1,"Sleepingroom: Shutter down, now 25%",2026-02-02,10:22:54
+User 1,"Sleepingroom: Shutter up, now 20%",2026-02-02,10:22:55
+User 1,"Sleepingroom: Shutter up, now 15%",2026-02-02,10:22:57
+User 1,"Sleepingroom: Shutter open, now 0%",2026-02-02,10:22:58
+User 1,"Sleepingroom: Shutter close, now 50%",2026-02-02,10:23:03
+User 1,"Sleepingroom: Shutter open, now 0%",2026-02-02,10:23:07
+User 1,"Sleepingroom: Shutter up, now 0%",2026-02-02,10:23:09
+User 1,"Sleepingroom: Shutter open, now 0%",2026-02-02,10:23:11
+User 1,"Sleepingroom: Shutter close, now 50%",2026-02-02,10:23:12
+User 1,"Sleepingroom: Shutter down, now 50%",2026-02-02,10:23:13
+User 1,"Sleepingroom: Light up, now 10%",2026-02-02,10:23:25
+User 1,"Sleepingroom: Light up, now 20%",2026-02-02,10:23:26
+User 1,"Sleepingroom: Light up, now 30%",2026-02-02,10:23:27
+User 1,"Sleepingroom: Light up, now 40%",2026-02-02,10:23:29
+User 1,"Sleepingroom: Light up, now 50%",2026-02-02,10:23:30
+User 1,"Sleepingroom: Light up, now 60%",2026-02-02,10:23:31
+User 1,"Sleepingroom: Light down, now 50%",2026-02-02,10:23:37
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:23:39
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:23:45
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:23:50
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:23:51
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:23:52
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:23:54
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:23:55
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:23:56
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:24:01
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:24:03
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:24:10
+User 1,"Sleepingroom: Light off, now 0%",2026-02-02,10:24:12
