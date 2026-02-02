@@ -1,4 +1,4 @@
-# 
+# Erstellt von Jannik Langhammer
 # Erzeugen des Raumes
 
 import pygame
@@ -170,7 +170,7 @@ class Room:
 
         # Tür zwischen beiden Räumen
         if self.name == "Sleepingroom":
-            
+
             door_width = 60
 
             door_rect = pygame.Rect(
