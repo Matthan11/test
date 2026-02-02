@@ -1,3 +1,6 @@
+# erstellt von Nico Lippl 
+# 02.02.2025
+
 import cv2
 import mediapipe as mp
 import time
