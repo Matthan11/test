@@ -17,5 +17,9 @@ Licht und Rollos gesteuert werden können.
 - utils.py → Hilfsfunktionen
 - logging_system.py → CSV-Logging
 - vision/ → Handtracking & State-Machine
+<<<<<<< HEAD
 - ui/ → Grafische Darstellung & Steuerung
 - 
+=======
+- ui/ → Grafische Darstellung & Steuerung
+>>>>>>> 7e514b0ffeee558bbd039d473ff8f94cee900fd2

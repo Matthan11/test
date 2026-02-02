@@ -1,3 +1,4 @@
+# Erstellt von Jannik Langhammer
 # Erzeugen des Raumes
 
 
@@ -10,7 +11,7 @@ class Room:
     def __init__(self, rect, window_rect, name):
         self.rect = rect
         self.window = window_rect
-        self.rollo_height = 0
+        self.rollo_height = 0   # Prozent (100 = komplett geschlossen)
         self.name = name
         self.light_level = 0  # Prozent (100 = voll an)
     

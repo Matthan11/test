@@ -21,6 +21,7 @@ User 1,"Kitchen: Shutter down, now 5%",2026-02-02,07:47:54
 User 1,"Kitchen: Shutter down, now 10%",2026-02-02,07:47:55
 User 1,"Kitchen: Shutter down, now 15%",2026-02-02,07:47:56
 User 1,User 1 returned to USER_SELECT,2026-02-02,07:48:01
+<<<<<<< HEAD
 User 1,login User 1,2026-02-02,08:56:46
 User 1,User 1 selected Kitchen,2026-02-02,08:56:49
 User 1,"Kitchen: Light up, now 10%",2026-02-02,08:56:57
@@ -32,3 +33,28 @@ User 1,"Kitchen: Light off, now 0%",2026-02-02,08:57:03
 User 1,"Kitchen: Light on, now 100%",2026-02-02,08:57:04
 User 1,"Kitchen: Light off, now 0%",2026-02-02,08:57:06
 User 1,User 1 returned to USER_SELECT,2026-02-02,08:57:13
+=======
+User 1,login User 1,2026-02-02,09:12:25
+User 1,User 1 selected Kitchen,2026-02-02,09:12:26
+User 1,User 1 selected Sleepingroom,2026-02-02,09:12:40
+User 1,User 1 returned to USER_SELECT,2026-02-02,09:12:47
+User 1,login User 1,2026-02-02,09:16:29
+User 1,User 1 selected Kitchen,2026-02-02,09:16:41
+User 1,User 1 returned to USER_SELECT,2026-02-02,09:16:47
+User 1,login User 1,2026-02-02,09:16:51
+User 1,User 1 returned to USER_SELECT,2026-02-02,09:16:52
+User 2,login User 2,2026-02-02,09:16:56
+User 2,User 2 returned to USER_SELECT,2026-02-02,09:16:58
+User 1,login User 1,2026-02-02,09:16:59
+User 1,login User 1,2026-02-02,09:20:10
+User 1,User 1 returned to USER_SELECT,2026-02-02,09:20:13
+User 2,login User 2,2026-02-02,09:20:14
+User 2,User 2 returned to USER_SELECT,2026-02-02,09:20:19
+User 2,login User 2,2026-02-02,09:20:20
+User 2,User 2 selected Sleepingroom,2026-02-02,09:20:22
+User 2,User 2 returned to USER_SELECT,2026-02-02,09:20:25
+User 2,login User 2,2026-02-02,09:20:33
+User 2,User 2 returned to USER_SELECT,2026-02-02,09:20:38
+User 1,login User 1,2026-02-02,09:20:40
+User 1,User 1 selected Kitchen,2026-02-02,09:20:42
+>>>>>>> 7e514b0ffeee558bbd039d473ff8f94cee900fd2

@@ -1,3 +1,5 @@
+# Ertellt von Jannik Langhammer und Nico Lippl
+
 import pygame
 import cv2
 import mediapipe as mp

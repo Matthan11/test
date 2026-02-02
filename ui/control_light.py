@@ -1,7 +1,8 @@
+# Erstellt von Jannik Langhammer
 # Hier nur die Lichtsteurung
 
 from logging_system import write_log
-from utils import clamp_light
+from ui.utils import clamp_light
 
 
 STEP = 10  # Prozent-Schritte
