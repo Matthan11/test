@@ -1,7 +1,3 @@
-Alles klar.
-Hier ist die **README ohne Fazit**, sonst unverändert und sauber für eine Abgabe geeignet.
-
----
 
 # Gesture-Controlled Smart Home Simulation
 
@@ -211,11 +207,3 @@ Optionales Test- und Debug-Modul:
 
 * Anzeige des Kamerabildes mit eingezeichneten Hand-Landmarks
 * Wird nicht im Hauptprogramm benötigt
-
----
-
-Wenn du willst, kann ich dir als Nächstes z. B.
-
-* eine **sehr kurze README (1 Seite)**
-* eine **technische Dokumentation für Lehrer**
-* oder eine **Gesten-Übersicht als Tabelle** erstellen.
